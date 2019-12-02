@@ -1,0 +1,26 @@
+Replication code for "Anomaly Detection in Large Scale Networks withLatent Space Models" by Lee, McCormick, Neil, and Sodja
+
+Required R packages:
+rjson
+pROC
+MASS
+
+
+To replicate the simulations in the paper:
+
+1) The file simulations.R simulates data and performs analysis, saving a .RData file "data/simulation_logit_data.RData"
+
+2) The file simulations_plots.R takes the "data/simulation_logit_data.RData" file from the previous step and produces the graphics and results in the paper.
+
+
+To replicate the results using the LANL data.
+
+0) To replicate the results you first need to obtain the LANL data from this website: https://csr.lanl.gov/data/2017.html.  Put data in the data/ directory
+
+1) Run netflow_periodicity.R to measure weekly periodicity
+
+2) netflow_logit_basic.R fits the comparison model that has no network effects and netflow_logit.R fits our proposed method.
+
+3) netflow_scoring.R uses workspaces with results output from (2) to generate anomaly scores based on subgraphs.
+
+4) netflow_detection.R uses scores to predict anomalies.  Note that the location of the red team attack listed in the paper is not included in the code since we are not authorized to release that information.  
